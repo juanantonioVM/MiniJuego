@@ -45,6 +45,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
+            KeyPress += Level1_KeyPress;
             ResumeLayout(false);
         }
 
