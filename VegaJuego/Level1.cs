@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace VegaJuego
 {
     public partial class Level1 : Form
@@ -22,6 +24,7 @@ namespace VegaJuego
         private void Level1_KeyPress(object sender, KeyPressEventArgs e)
         {
             Player.mover(e);
+            Debug.WriteLine("[X" + Player.Caja.Location.X + " ,Y" + Player.Caja.Location.Y + "]");
         }
     }
 }
