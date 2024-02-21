@@ -28,13 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Level1));
+            MovEnemigos = new System.Windows.Forms.Timer(components);
             SuspendLayout();
+            // 
+            // MovEnemigos
+            // 
+            MovEnemigos.Enabled = true;
+            MovEnemigos.Tick += timer1_Tick_1;
             // 
             // Level1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackgroundImage = Properties.Resources.FondoFinal;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(806, 467);
@@ -50,5 +56,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer MovEnemigos;
     }
 }
