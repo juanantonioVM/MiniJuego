@@ -134,6 +134,7 @@
             Name = "Level1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            FormClosed += Level1_FormClosed;
             Load += Form1_Load;
             KeyPress += Level1_KeyPress;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

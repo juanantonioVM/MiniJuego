@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Media;
 
 namespace VegaJuego
 {
@@ -6,15 +7,23 @@ namespace VegaJuego
     {
         Link Player;
         Broncas Enemigo1;
-        public Level1()
+        SoundPlayer musica;
+        Boolean HaySonido = false;
+        public Level1(CheckBox onOff)
         {
             InitializeComponent();
             IniciarPersonajes();
-            IniciarOpcionesDelMapa();
+            IniciarOpcionesDelMapa(onOff);
         }
 
-        private void IniciarOpcionesDelMapa()
+        private void IniciarOpcionesDelMapa(CheckBox onOff)
         {
+            if (onOff.Checked == true)
+            {
+                musica = new SoundPlayer(global::VegaJuego.Properties.Resources.sonido);
+                musica.PlayLooping();
+                HaySonido = true;
+            }
             labelVida.Text = "Salud->" + Player.Salud;
             labelEscudo.Text = "Escudo->" + Player.Escudo;
             labelArma.Text = "Arma->" + Player.Arma;
@@ -36,7 +45,7 @@ namespace VegaJuego
             Player.mover(e);
             Debug.WriteLine("[X" + Player.Caja.Location.X + " ,Y" + Player.Caja.Location.Y + "]");
         }
-        
+
         private void timer1_Tick_1(object sender, EventArgs e)
         {
             labelVida.Text = "Salud->" + Player.Salud;
@@ -52,11 +61,20 @@ namespace VegaJuego
             if (Player.Salud <= 0)
             {
                 this.Hide();
+                if (HaySonido == true)
+                {
+                    musica.Stop();
+                }
                 Final End = new Final();
                 //Paramos el temporizador
                 MovEnemigos.Stop();
                 End.Show();
             }
+        }
+
+        private void Level1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

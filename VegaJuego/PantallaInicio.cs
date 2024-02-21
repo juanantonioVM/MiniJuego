@@ -30,7 +30,7 @@ namespace VegaJuego
         private void BotonInicio_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Level1 Level1 = new Level1();
+            Level1 Level1 = new Level1(checkSonido);
             Level1.Show();
         }
     }
