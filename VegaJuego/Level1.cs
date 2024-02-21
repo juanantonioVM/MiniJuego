@@ -10,6 +10,14 @@ namespace VegaJuego
         {
             InitializeComponent();
             IniciarPersonajes();
+            IniciarOpcionesDelMapa();
+        }
+
+        private void IniciarOpcionesDelMapa()
+        {
+            labelVida.Text = "Salud->" + Player.Salud;
+            labelEscudo.Text = "Escudo->" + Player.Escudo;
+            labelArma.Text = "Arma->" + Player.Arma;
         }
 
         private void IniciarPersonajes()
@@ -31,6 +39,14 @@ namespace VegaJuego
         
         private void timer1_Tick_1(object sender, EventArgs e)
         {
+            labelVida.Text = "Salud->" + Player.Salud;
+            labelEscudo.Text = "Escudo->" + Player.Escudo;
+            labelArma.Text = "Arma->" + Player.Arma;
+
+            if (Player.Caja.Bounds.IntersectsWith(Enemigo1.Caja.Bounds))
+            {
+                Player.Salud = Player.Salud - 1;
+            }
             Enemigo1.mover();
         }
     }
